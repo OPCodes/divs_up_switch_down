@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+			position: relative;
+		}
+		div {
+			position: absolute;
+			top: 10px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 20px;
+			text-align: center;
+			color: #fff;
+			background: red;
+		}
+	</style>
+	<script src="tools.js"></script>
+	<script src="MTween.js"></script>
+	<script>
+		window.onload = function (){
+		 	var aDiv = $("div");
+		 	var onOff = true;
+		 	var timer = null;
+		 	for( var i = 0; i < aDiv.length; i++ ){
+		 		aDiv[i].style.left = 10 + i * 60 + "px";
+		 	}
+
+		 	document.onclick = function (){
+
+		 		if( timer ) return;
+		 		
+		 		for( var j = 0; j < aDiv.length; j++ ){
+		 			func(j);
+			 	}
+
+		 		function func(n){
+	 				timer = setTimeout(function (){
+		 				MTween(aDiv[n],"top",1000,onOff?400:10,"linear",function (){
+		 					if( n === aDiv.length - 1 ){
+		 						onOff = !onOff;
+		 						timer = null;
+		 					}
+		 				});
+		 			},150*n);
+		 		}
+	 		
+		 	}
+		}
+	</script>
+</head>
+<body>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+	<div>7</div>
+	<div>8</div>
+	<div>9</div>
+	<div>10</div>
+	<div>11</div>
+	<div>12</div>
+	<div>13</div>
+	<div>14</div>
+	<div>15</div>
+	<div>16</div>
+	<div>17</div>
+	<div>18</div>
+	<div>19</div>
+	<div>20</div>
+</body>
+</html>
+    
